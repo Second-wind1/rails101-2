@@ -20,11 +20,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to account_posts_path, aler: 'Post delete'
+  end
+
 
   private
 
   def post_params
     params.require(:post).permit(:content)
   end
-  
+
 end
